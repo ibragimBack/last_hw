@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library</title>
+</head>
+<body>
+<h1>Данные из бд</h1>
+<o1>
+  {% for i in query %}
+  <li>
+    <h2>{{ i.title }}</h2>
+    <p>{{ i.description }}</p>
+    <p>{{ i.location }}</p>
+    <p>{{ i.price }}</p>
+    <p>{{ i.create_at }}</p>
+  </li>
+  {% endfor %}
+</o1>
+</body>
+</html>
