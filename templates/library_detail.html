@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <center>
+    <h1>{{query_id.title}}</h1>
+    <p>{{query_id.description}}</p>
+    <p>{{query_id.types_books}}</p>
+    <img src="{{query_id.images.url}}" alt="" width="200" height="300">
+    <audio controls>
+        <source src="{{query_id.music.url}}" type="audio/mp3">
+    </audio>
+    <iframe src="{{query_id.youtube_url}}" frameborder="0" width="640" height="420"></iframe>
+    <p>{{query_id.location}}</p>
+    <p>{{query_id.price}}</p>
+    <p>{{query_id.email}}</p>
+    <p>{{query_id.phone_number}}</p>
+    <p>{{query_id.create_at}}</p>
+  </center>
+</body>
+</html>

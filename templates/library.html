@@ -6,16 +6,18 @@
 </head>
 <body>
 <h1>Данные из бд</h1>
-<o1>
+<ol>
   {% for i in query %}
   <li>
-    <h2>{{ i.title }}</h2>
-    <p>{{ i.description }}</p>
-    <p>{{ i.location }}</p>
-    <p>{{ i.price }}</p>
-    <p>{{ i.create_at }}</p>
+      <img src="{{i.images.url}}" alt=""  width="200" height="300">
+      <h2>{{ i.title }}</h2>
+      <p>{{ i.create_at }}</p>
+      <a href="/book/{{i.id}}/">Детально</a>
+      <hr>
+      <hr>
+      <hr>
   </li>
   {% endfor %}
-</o1>
+</ol>
 </body>
 </html>

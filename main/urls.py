@@ -2,11 +2,12 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
-from book.views import post_library_view
+from book.views import post_library_view, post_librarys_detail_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('book/', post_library_view),
+    path('book/<int:id>/', post_librarys_detail_view),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
