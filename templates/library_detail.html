@@ -1,24 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-  <center>
-    <h1>{{query_id.title}}</h1>
-    <p>{{query_id.description}}</p>
-    <p>{{query_id.types_books}}</p>
-    <img src="{{query_id.images.url}}" alt="" width="200" height="300">
+{% include 'header_and_footer/header.html' %}
+
+<div class="demo-wrapper">
+    <a target="_blank" href="" class="link">
+        <div class="link-inner">
+            <img class="mobile" src="{{query_id.image.url}}">
+            <img src="{{query_id.image.url}}">
+            <div class="post-meta">
+                <h2 class="text-white">{{query_id.title}}</h2>
+                <p class="text-white">{{query_id.description}}</p>
+                <p class="text-white">{{query_id.types_books}}</p>
+                <p class="text-white">{{query_id.location}}</p>
+                <p class="text-white">{{query_id.price}}</p>
+                <p class="text-white">{{query_id.email}}</p>
+                <p class="text-white">{{query_id.phone_number}}</p>
+                <p class="text-white">{{query_id.create_at}}</p>
+            </div>
+        </div>
+    </a>
+</div>
+
+<div class="audio-container">
     <audio controls>
         <source src="{{query_id.music.url}}" type="audio/mp3">
     </audio>
-    <iframe src="{{query_id.youtube_url}}" frameborder="0" width="640" height="420"></iframe>
-    <p>{{query_id.location}}</p>
-    <p>{{query_id.price}}</p>
-    <p>{{query_id.email}}</p>
-    <p>{{query_id.phone_number}}</p>
-    <p>{{query_id.create_at}}</p>
-  </center>
-</body>
-</html>
+</div>
+
+<div class="iframe_container">
+    <iframe src="{{query_id.youtube_url}}" frameborder="0"></iframe>
+</div>
+
+{% include 'header_and_footer/footer.html' %}

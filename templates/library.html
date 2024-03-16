@@ -1,23 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Library</title>
-</head>
-<body>
-<h1>Данные из бд</h1>
-<ol>
-  {% for i in query %}
-  <li>
-      <img src="{{i.images.url}}" alt=""  width="200" height="300">
-      <h2>{{ i.title }}</h2>
-      <p>{{ i.create_at }}</p>
-      <a href="/book/{{i.id}}/">Детально</a>
-      <hr>
-      <hr>
-      <hr>
-  </li>
-  {% endfor %}
-</ol>
-</body>
-</html>
+{% include 'header_and_footer/header.html' %}
+
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+
+    {% for i in query %}
+
+    <div class="card" style="width: 18rem;">
+        <img src="{{i.images.url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{ i.title }}</h5>
+            <p class="card-text">{{ i.create_at }}</p>
+            <a href="/book/{{i.id}}/" class="btn btn-primary">Детально</a>
+        </div>
+    </div>
+
+    {% endfor %}
+    </div>
+</div>
+
+{% include 'header_and_footer/footer.html' %}
