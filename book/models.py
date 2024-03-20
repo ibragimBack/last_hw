@@ -27,3 +27,4 @@ class Library(models.Model):
     class Meta:
         verbose_name = 'Книгу'
         verbose_name_plural = 'Книги'
+
