@@ -1,8 +1,9 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
+from django.core.validators import MinValueValidator, MaxValueValidator
+
 
 class Book_Forum(models.Model):
-
     GENRE_BOOKS = (
         ('Романтика', 'Романтика'),
         ('Детектив', 'Детектив'),
@@ -23,3 +24,12 @@ class Book_Forum(models.Model):
     class Meta:
         verbose_name = 'Книги'
         verbose_name_plural = 'Получение книг пользователей'
+
+
+class ReviewBook(models.Model):
+    name_correction = models.ForeignKey(Book_Forum, on_delete=models.CASCADE, related_name='correct')
+    description = models.TextField()
+    stars = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
+
+    def __str__(self):
+        return self.description

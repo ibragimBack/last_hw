@@ -1,10 +1,14 @@
 from django.urls import path
-from book_forum.views import create_book_forum_view, book_list_view, book_detail_view, delete_book_forum_view, edit_book_forum_view
+from book_forum.views import CreateBookView, BookListView, BookDetailView, DeleteBookView, UpdateBookView, \
+    SearchBookView, CreateReviewBook, ReviewBookDetail
 
 urlpatterns = [
-    path('book_list/', book_list_view),
-    path('book_list/<int:id>', book_detail_view),
-    path('book_list/<int:id>/delete/', delete_book_forum_view),
-    path('book_list/<int:id>/update/', edit_book_forum_view),
-    path('create_book/', create_book_forum_view),
+    path('book_list/', BookListView.as_view()),
+    path('book_list/<int:id>', BookDetailView.as_view()),
+    path('book_list/<int:id>/delete/', DeleteBookView.as_view()),
+    path('book_list/<int:id>/update/', UpdateBookView.as_view()),
+    path('create_book/', CreateBookView.as_view()),
+    path('', SearchBookView.as_view(), name='search'),
+    path('create_review_book/', CreateReviewBook.as_view()),
+    path('review_book_detail/', ReviewBookDetail.as_view()),
 ]

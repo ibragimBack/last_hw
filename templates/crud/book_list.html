@@ -6,7 +6,14 @@
 </head>
 <body>
 
+<form action="{% url 'search' %}" method="GET" role="search">
+    <input type="search" type="text" name="q" placeholder="Поиск" aria-label="Search">
+</form>
+<br>
+
 <button><a href="/create_book/">Добавить книгу</a></button>
+<button><a href="/create_review_book/">Добавить коментарий</a></button>
+
 {% for i in book %}
 <h1>{{i.name}}</h1>
 <button><a href="/book_list/{{i.id}}">Подробнее</a></button>
