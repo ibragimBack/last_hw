@@ -6,18 +6,23 @@
 </head>
 <body>
 
-
 <h1>{{book_id.name}}</h1>
 <p>{{book_id.book}}</p>
 <p>{{book_id.genre}}</p>
 <p>{{book_id.phone_number}}</p>
 <p>{{book_id.description}}</p>
 
+<ul>
+    {% for comment in comments %}
+    <h2>{{ comment.name_correction }}</h2>
+    <p>{{ comment.description }}</p>
+    <p>{{ comment.stars }}</p>
+    {% endfor %}
+</ul>
 
 <button><a href="/book_list/{{book_id.id}}/update/">Изменить</a></button>
 <button><a href="/book_list/{{book_id.id}}/delete/">Удалить</a></button>
-<button><a href="/review_book_detail/">Коментарии</a></button>
-
+<button><a href="/create_comment/">Добавить коментарий</a></button>
 
 </body>
 </html>

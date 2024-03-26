@@ -1,7 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404
 from book_forum.forms import BookForumForm, ReviewBookForm
 from book_forum.models import Book_Forum, ReviewBook
-from django.http import HttpResponse
 from django.views import generic
 
 
@@ -24,23 +23,14 @@ class BookDetailView(generic.DetailView):
         return get_object_or_404(self.model, id=book_id)
 
 
-class ReviewBookDetail(generic.DetailView):
-    template_name = 'crud/review_book_detail.html'
-    context_object_name = 'comments'
-    model = ReviewBook
-
-    def get_object(self, **kwargs):
-       return get_object_or_404(self.model, id=self.kwargs.get('id'))
-
-
-class CreateReviewBook(generic.CreateView):
-    template_name = 'crud/create_review_book.html'
-    form_class = ReviewBookForm
+class CreateBookView(generic.CreateView):
+    template_name = 'crud/create_book.html'
+    form_class = BookForumForm
     success_url = '/book_list/'
 
     def form_valid(self, form):
         print(form.cleaned_data)
-        return super(CreateReviewBook, self).form_valid(form=form)
+        return super(CreateBookView, self).form_valid(form=form)
 
 
 class UpdateBookView(generic.UpdateView):
@@ -68,16 +58,6 @@ class DeleteBookView(generic.DeleteView):
         return get_object_or_404(self.model, id=book_id)
 
 
-class CreateBookView(generic.CreateView):
-    template_name = 'crud/create_book.html'
-    form_class = BookForumForm
-    success_url = '/book_list/'
-
-    def form_valid(self, form):
-        print(form.cleaned_data)
-        return super(CreateBookView, self).form_valid(form=form)
-
-
 class SearchBookView(generic.ListView):
     template_name = 'crud/book_list.html'
     context_object_name = 'book'
@@ -94,6 +74,18 @@ class SearchBookView(generic.ListView):
         context = super().get_context_data(**kwargs)
         context['q'] = self.request.GET.get('q')
         return context
+
+
+class CommentListView(generic.ListView):
+    template_name = 'crud/book_detail.html'
+    model = ReviewBook
+    context_object_name = 'comments'
+
+
+class CommentCreateView(generic.CreateView):
+    template_name = 'comment/create_comment.html'
+    form_class = ReviewBookForm
+    success_url = '/book_list/'
 
 # def create_book_forum_view(request):
 #     if request.method == 'POST':

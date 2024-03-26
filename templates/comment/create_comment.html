@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form action="/create_review_book/" method="POST">
+<form action="/create_comment/" method="POST">
     {% csrf_token %}
     {{form.as_p}}
     <button type="submit">Отправить</button>
