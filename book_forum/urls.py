@@ -1,6 +1,6 @@
 from django.urls import path
 from book_forum.views import CreateBookView, BookListView, BookDetailView, DeleteBookView, UpdateBookView, \
-    SearchBookView, CommentCreateView, CommentListView
+    SearchBookView, CommentCreateView
 
 urlpatterns = [
     path('book_list/', BookListView.as_view()),
@@ -10,5 +10,4 @@ urlpatterns = [
     path('create_book/', CreateBookView.as_view()),
     path('', SearchBookView.as_view(), name='search'),
     path('create_comment/', CommentCreateView.as_view()),
-    path('comment_list/', CommentListView.as_view()),
 ]

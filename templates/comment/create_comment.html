@@ -6,10 +6,11 @@
 </head>
 <body>
 
-<form action="/create_comment/" method="POST">
+<form action="/create_comment/" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{form.as_p}}
     <button type="submit">Отправить</button>
+    <button type="reset">Очистить</button>
 </form>
 
 </body>

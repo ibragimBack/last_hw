@@ -12,17 +12,19 @@
 <p>{{book_id.phone_number}}</p>
 <p>{{book_id.description}}</p>
 
-<ul>
-    {% for comment in comments %}
-    <h2>{{ comment.name_correction }}</h2>
-    <p>{{ comment.description }}</p>
-    <p>{{ comment.stars }}</p>
-    {% endfor %}
-</ul>
-
 <button><a href="/book_list/{{book_id.id}}/update/">Изменить</a></button>
 <button><a href="/book_list/{{book_id.id}}/delete/">Удалить</a></button>
 <button><a href="/create_comment/">Добавить коментарий</a></button>
+
+<ul>
+    <h2>Коментарии:</h2>
+    {% for comment in book_id.comment.all %}
+    <li>
+        <p>{{ comment.description }}</p>
+        <p>{{ comment.stars }}</p>
+    </li>
+    {% endfor %}
+</ul>
 
 </body>
 </html>

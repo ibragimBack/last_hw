@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404
 from book_forum.forms import BookForumForm, ReviewBookForm
-from book_forum.models import Book_Forum, ReviewBook
+from book_forum.models import Book_Forum
 from django.views import generic
 
 
@@ -75,17 +75,14 @@ class SearchBookView(generic.ListView):
         context['q'] = self.request.GET.get('q')
         return context
 
-
-class CommentListView(generic.ListView):
-    template_name = 'crud/book_detail.html'
-    model = ReviewBook
-    context_object_name = 'comments'
-
-
 class CommentCreateView(generic.CreateView):
     template_name = 'comment/create_comment.html'
     form_class = ReviewBookForm
     success_url = '/book_list/'
+
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return super(CommentCreateView, self).form_valid(form=form)
 
 # def create_book_forum_view(request):
 #     if request.method == 'POST':

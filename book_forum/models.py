@@ -27,7 +27,7 @@ class Book_Forum(models.Model):
 
 
 class ReviewBook(models.Model):
-    name_correction = models.ForeignKey(Book_Forum, on_delete=models.CASCADE, related_name='correct')
+    name_correction = models.ForeignKey(Book_Forum, on_delete=models.CASCADE, related_name='comment')
     description = models.TextField()
     stars = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
 
