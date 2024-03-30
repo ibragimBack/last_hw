@@ -1,8 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/style_books.css' %}">
 </head>
 <body>
 
@@ -10,6 +12,11 @@
     <input type="search" type="text" name="q" placeholder="Поиск" aria-label="Search">
 </form>
 <br>
+
+<form action="{% url 'person:login' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <button class="logout-btn" type="submit">Выйти</button>
+</form>
 
 <button><a href="/create_book/">Добавить книгу</a></button>
 

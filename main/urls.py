@@ -5,6 +5,7 @@ from django.conf import settings
 from book.views import post_library_view, post_librarys_detail_view
 from django.conf.urls import include
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('book/', post_library_view),
@@ -12,6 +13,7 @@ urlpatterns = [
     path('^i18n/', include('django.conf.urls.i18n')),
     path('', include('book_forum.urls')),
     path('', include('parser.urls')),
+    path('', include('custom_users.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
