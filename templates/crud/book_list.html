@@ -22,8 +22,16 @@
 
 {% for i in book %}
 <h1>{{i.name}}</h1>
+{% for tag in i.tags.all %}
+<p>{{tag.name}}</p>
+{% endfor %}
 <button><a href="/book_list/{{i.id}}">Подробнее</a></button>
 {% endfor %}
+
+<button><a href="/everyday_genre/">Повседневность</a></button>
+<button><a href="/detective_genre/">Детектив</a></button>
+<button><a href="/romantic_genre/">Романтика</a></button>
+<button><a href="/mystic_genre/">Мистика</a></button>
 
 </body>
 </html>

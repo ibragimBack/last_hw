@@ -9,8 +9,8 @@ class BookListView(generic.ListView):
     context_object_name = 'book'
     model = Book_Forum
 
-    def __str__(self):
-        return self.model.objects.all()
+    def get_queryset(self):
+        return self.model.objects.filter().order_by('-id')
 
 
 class BookDetailView(generic.DetailView):
@@ -75,6 +75,7 @@ class SearchBookView(generic.ListView):
         context['q'] = self.request.GET.get('q')
         return context
 
+
 class CommentCreateView(generic.CreateView):
     template_name = 'comment/create_comment.html'
     form_class = ReviewBookForm
@@ -83,6 +84,43 @@ class CommentCreateView(generic.CreateView):
     def form_valid(self, form):
         print(form.cleaned_data)
         return super(CommentCreateView, self).form_valid(form=form)
+
+
+class EveryDayListView(generic.ListView):
+    template_name = 'genres/everyday_list.html'
+    context_object_name = 'everyday'
+    model = Book_Forum
+
+    def get_queryset(self):
+        return self.model.objects.filter(tags__name='#повседневность').order_by('-id')
+
+
+class MysticListView(generic.ListView):
+    template_name = 'genres/mystic_list.html'
+    context_object_name = 'mystic'
+    model = Book_Forum
+
+    def get_queryset(self):
+        return self.model.objects.filter(tags__name='#мистика').order_by('-id')
+
+
+class RomanticListView(generic.ListView):
+    template_name = 'genres/romantic_list.html'
+    context_object_name = 'romantic'
+    model = Book_Forum
+
+    def get_queryset(self):
+        return self.model.objects.filter(tags__name='#романтика').order_by('-id')
+
+
+class DetectiveListView(generic.ListView):
+    template_name = 'genres/detective_list.html'
+    context_object_name = 'detective'
+    model = Book_Forum
+
+    def get_queryset(self):
+        return self.model.objects.filter(tags__name='#детектив').order_by('-id')
+
 
 # def create_book_forum_view(request):
 #     if request.method == 'POST':
